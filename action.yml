@@ -19,11 +19,18 @@ runs:
           git config --local user.email "${{ inputs.userEmail }}"
           git config --local user.name "${{ inputs.userName }}"
     - name: Build
-      uses: actions/setup-node@v2
-        with:
-          node-version: '12'
-        run: |
+      shell: bash
+      run: |
+          echo "node version"
+          node -v
+          echo "Fetching all"
+          git fetch --all
+          echo "Doing checkout of branch ${{ inputs.target }}"
+          git checkout ${{ inputs.target }}
           npm install
           npm run build
+          echo "Get status"
+          git status
           git add . && git diff --quiet && git diff --staged --quiet || git commit -am 'Automated build [skip ci]'
-          git push
+          echo "Pushing to origin"
+          git push origin ${{ inputs.target }} -f
