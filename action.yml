@@ -19,7 +19,7 @@ runs:
           git config --local user.email "${{ inputs.userEmail }}"
           git config --local user.name "${{ inputs.userName }}"
     - name: Build
-      - uses: actions/setup-node@v2
+      uses: actions/setup-node@v2
         with:
           node-version: '12'
         run: |
