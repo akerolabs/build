@@ -26,7 +26,7 @@ runs:
           echo "Fetching all"
           git fetch --all
           echo "Doing checkout of branch ${{ inputs.target }}"
-          git checkout ${{ inputs.target }}
+          git switch ${{ inputs.target }}
           npm install
           npm run build
           echo "Get status"
