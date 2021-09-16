@@ -31,6 +31,6 @@ runs:
           npm run build
           echo "Get status"
           git status
-          git add . && git diff --quiet && git diff --staged --quiet || git commit -am 'Automated build [skip ci]'
+          git add . && git diff --quiet && git diff --staged --quiet || git commit -am 'Automated build [skip actions]'
           echo "Pushing to origin"
           git push origin ${{ inputs.target }} -f
